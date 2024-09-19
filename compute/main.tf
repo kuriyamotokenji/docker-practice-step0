@@ -48,6 +48,12 @@ resource "aws_security_group" "this" {
   description = "${var.pj}-${var.app}-${var.name} ec2 sg"
   vpc_id      = var.vpc-id
 
+  ingress {
+      from_port   = 8080
+      to_port     = 8080
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
   egress {
       from_port   = 0
       to_port     = 0
